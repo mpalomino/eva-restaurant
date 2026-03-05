@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import uberEatsLogo from '../assets/uber-eats.png';
+import didiFoodLogo from '../assets/didi-food.png';
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+    <p class="accent text-xl md:text-2xl text-gray mb-10" data-i18n="delivery.title">
+      Tambien te llevamos el brunch a casa
+    </p>
+
+    <div class="flex items-center justify-center gap-10 md:gap-16">
+      <!-- Uber Eats -->
+      <a href="#" class="group opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" aria-label="Order on Uber Eats">
+        <Image
+          src={uberEatsLogo}
+          alt="Uber Eats"
+          width={80}
+          class="rounded-xl"
+        />
+      </a>
+
+      <!-- Didi Food -->
+      <a href="#" class="group opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" aria-label="Order on Didi Food">
+        <Image
+          src={didiFoodLogo}
+          alt="Didi Food"
+          width={94}
+          class="rounded-xl"
+        />
+      </a>
+    </div>
+  </div>
+</section>

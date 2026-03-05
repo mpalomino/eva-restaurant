@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.astro';
+import Awards from '../components/Awards.astro';
+import About from '../components/About.astro';
+import Menu from '../components/Menu.astro';
+import Gallery from '../components/Gallery.astro';
+import Experience from '../components/Experience.astro';
+import Location from '../components/Location.astro';
+import Delivery from '../components/Delivery.astro';
+import Feedback from '../components/Feedback.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Eva's Restaurante | Brunch en La Paz, B.C.S."
+  description="Eva's Restaurante — brunch de autor en La Paz, Baja California Sur. Chilaquiles, pan frances artesanal, smoothies y mas. Donde cada manana es una celebracion."
+>
+  <Navigation />
+  <main id="main">
+    <Hero />
+    <Awards />
+    <About />
+    <Menu />
+    <Gallery />
+    <Experience />
+    <Location />
+    <Delivery />
+    <Feedback />
+    <ReservationCTA />
+  </main>
+  <Footer />
+</Layout>

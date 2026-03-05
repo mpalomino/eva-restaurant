@@ -1,0 +1,57 @@
+---
+const pillars = [
+  {
+    icon: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4C24 4 12 12 12 24C12 36 24 44 24 44C24 44 36 36 36 24C36 12 24 4 24 4Z"/><circle cx="24" cy="24" r="6"/></svg>',
+    titleKey: 'experience.brioche.title',
+    descKey: 'experience.brioche.desc',
+    titleDefault: 'Pan Brioche Artesanal',
+    descDefault: 'Horneado diariamente en nuestra cocina, base de nuestro pan frances y sandwiches.',
+  },
+  {
+    icon: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 36H40M12 36V20L24 8L36 20V36"/><rect x="18" y="24" width="12" height="12"/></svg>',
+    titleKey: 'experience.smoothies.title',
+    descKey: 'experience.smoothies.desc',
+    titleDefault: 'Smoothies con Proteina',
+    descDefault: 'Preparados con proteina vegana Habits para un brunch nutritivo y delicioso.',
+  },
+  {
+    icon: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 24H42M14 12L10 24L14 36M34 12L38 24L34 36M24 8V40"/></svg>',
+    titleKey: 'experience.mexican.title',
+    descKey: 'experience.mexican.desc',
+    titleDefault: 'Tradicion Mexicana',
+    descDefault: 'Chilaquiles, barbacoa, cochinita pibil — los clasicos reinventados con amor.',
+  },
+  {
+    icon: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8C16 8 14 16 14 20C14 26 18 28 24 28C30 28 34 26 34 20C34 16 32 8 32 8"/><path d="M12 28L10 40H38L36 28"/><path d="M20 16C20 16 22 12 24 12C26 12 28 16 28 16"/></svg>',
+    titleKey: 'experience.coffee.title',
+    descKey: 'experience.coffee.desc',
+    titleDefault: 'Cafe de la Olla',
+    descDefault: 'Preparado con piloncillo y canela, una tradicion que calienta el alma.',
+  },
+];
+---
+
+<section id="experience" class="py-20 md:py-32 bg-white">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <p class="accent text-terra text-lg tracking-[0.2em] uppercase mb-3">Lo que nos hace unicos</p>
+      <h2 class="heading text-4xl md:text-5xl text-black" data-i18n="experience.title">
+        La Experiencia Eva's
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
+      {pillars.map((pillar) => (
+        <div class="group text-center p-6 rounded-lg hover:bg-cream transition-colors duration-500">
+          <div class="w-16 h-16 mx-auto mb-6 text-green group-hover:text-terra transition-colors duration-500" set:html={pillar.icon} />
+          <h3 class="heading text-xl mb-3 text-black" data-i18n={pillar.titleKey}>
+            {pillar.titleDefault}
+          </h3>
+          <p class="text-gray text-sm leading-relaxed" data-i18n={pillar.descKey}>
+            {pillar.descDefault}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

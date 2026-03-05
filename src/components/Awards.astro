@@ -1,0 +1,26 @@
+---
+const awards = [
+  { viewBox: '0 0 64 64', path: 'M32 4L38 20H56L42 30L46 46L32 36L18 46L22 30L8 20H26Z' },
+  { viewBox: '0 0 64 64', path: 'M32 8C18 8 8 18 8 32C8 46 18 56 32 56C46 56 56 46 56 32C56 18 46 8 32 8ZM32 14C42.5 14 50 21.5 50 32C50 42.5 42.5 50 32 50C21.5 50 14 42.5 14 32C14 21.5 21.5 14 32 14ZM24 28L30 34L40 24L43 27L30 40L21 31Z' },
+  { viewBox: '0 0 64 64', path: 'M32 6L6 22V42L32 58L58 42V22ZM32 12L52 25V39L32 52L12 39V25Z' },
+  { viewBox: '0 0 64 64', path: 'M20 8C12 8 8 14 8 20C8 38 32 56 32 56C32 56 56 38 56 20C56 14 52 8 44 8C38 8 34 12 32 16C30 12 26 8 20 8Z' },
+  { viewBox: '0 0 64 64', path: 'M32 2L24 22H4L20 34L14 56L32 42L50 56L44 34L60 22H40Z M32 18L36 28H46L38 34L40 44L32 38L24 44L26 34L18 28H28Z' },
+];
+---
+
+<section class="py-10 bg-cream-dark border-y border-gray-light/50">
+  <div class="max-w-5xl mx-auto px-4 flex items-center justify-center gap-10 md:gap-16 flex-wrap">
+    {awards.map((award) => (
+      <div class="opacity-30 hover:opacity-60 transition-opacity duration-500 hover:scale-110 transform">
+        <svg
+          class="w-10 h-10 md:w-12 md:h-12 text-terra"
+          viewBox={award.viewBox}
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d={award.path} />
+        </svg>
+      </div>
+    ))}
+  </div>
+</section>

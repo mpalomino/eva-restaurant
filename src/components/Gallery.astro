@@ -1,0 +1,40 @@
+---
+const images = [
+  { src: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=600&q=80', alt: 'Chilaquiles' },
+  { src: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&q=80', alt: 'French Toast' },
+  { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80', alt: 'Coffee' },
+  { src: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80', alt: 'Brunch plate' },
+  { src: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80', alt: 'Restaurant interior' },
+  { src: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80', alt: 'Pancakes' },
+];
+---
+
+<section id="gallery" class="py-20 md:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <p class="accent text-terra text-lg tracking-[0.2em] uppercase mb-3">Eva's Restaurante</p>
+      <h2 class="heading text-5xl md:text-6xl text-black" data-i18n="gallery.title">Galeria</h2>
+    </div>
+
+    <!-- Masonry-style grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      {images.map((img, i) => (
+        <div class:list={[
+          'group relative overflow-hidden rounded-lg cursor-pointer',
+          i === 0 && 'row-span-2',
+          i === 3 && 'md:row-span-2',
+        ]}>
+          <div class:list={[
+            'w-full bg-cream-dark bg-cover bg-center transition-transform duration-700 group-hover:scale-110',
+            (i === 0 || i === 3) ? 'h-full min-h-[300px] md:min-h-[500px]' : 'aspect-square',
+          ]} style={`background-image: url('${img.src}')`}></div>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex items-end">
+            <p class="text-white text-sm tracking-wider uppercase p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+              {img.alt}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,122 @@
+---
+const links = [
+  { key: 'nav.home', href: '#hero' },
+  { key: 'nav.menu', href: '#menu' },
+  { key: 'nav.about', href: '#about' },
+  { key: 'nav.gallery', href: '#gallery' },
+  { key: 'nav.contact', href: '#location' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-20">
+    <!-- Logo -->
+    <a href="#hero" class="heading text-2xl tracking-wide text-white transition-colors duration-300" id="nav-logo">
+      Eva's
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="nav-link text-sm uppercase tracking-[0.2em] text-white/80 hover:text-white transition-colors duration-300"
+          data-i18n={link.key}
+        >
+          {link.key.split('.')[1]}
+        </a>
+      ))}
+      <button
+        id="lang-toggle-desktop"
+        class="text-sm uppercase tracking-[0.2em] text-white/60 hover:text-white transition-colors duration-300 border border-white/30 px-3 py-1 rounded"
+        data-i18n="lang.toggle"
+      >
+        EN
+      </button>
+      <a
+        href="tel:+526121922716"
+        class="bg-green text-white text-sm uppercase tracking-[0.15em] px-5 py-2.5 rounded hover:bg-green-dark transition-colors duration-300"
+        data-i18n="nav.reserve"
+      >
+        Reservar
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="mobile-toggle" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+      <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-black/95 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-500 md:hidden">
+    <button id="mobile-close" class="absolute top-6 right-6 text-white text-3xl" aria-label="Close menu">&times;</button>
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class="mobile-nav-link accent text-3xl text-white/80 hover:text-terra-light tracking-wide transition-colors duration-300"
+        data-i18n={link.key}
+      >
+        {link.key.split('.')[1]}
+      </a>
+    ))}
+    <button
+      id="lang-toggle-mobile"
+      class="text-sm uppercase tracking-[0.2em] text-white/60 hover:text-white border border-white/30 px-4 py-2 rounded mt-4"
+      data-i18n="lang.toggle"
+    >
+      EN
+    </button>
+    <a
+      href="tel:+526121922716"
+      class="bg-green text-white uppercase tracking-[0.15em] px-8 py-3 rounded text-lg mt-2"
+      data-i18n="nav.reserve"
+    >
+      Reservar
+    </a>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileClose = document.getElementById('mobile-close');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const langDesktop = document.getElementById('lang-toggle-desktop');
+  const langMobile = document.getElementById('lang-toggle-mobile');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar?.classList.add('bg-black/90', 'backdrop-blur-md', 'shadow-lg');
+    } else {
+      navbar?.classList.remove('bg-black/90', 'backdrop-blur-md', 'shadow-lg');
+    }
+  });
+
+  // Mobile menu
+  mobileToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
+    mobileMenu?.classList.add('opacity-100', 'pointer-events-auto');
+  });
+
+  function closeMobile() {
+    mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto');
+  }
+
+  mobileClose?.addEventListener('click', closeMobile);
+  mobileLinks.forEach((link) => link.addEventListener('click', closeMobile));
+
+  // Language toggle
+  function toggleLang() {
+    const next = window.__lang === 'es' ? 'en' : 'es';
+    window.applyLang(next);
+  }
+
+  langDesktop?.addEventListener('click', toggleLang);
+  langMobile?.addEventListener('click', toggleLang);
+</script>

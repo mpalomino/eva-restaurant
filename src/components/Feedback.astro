@@ -1,0 +1,122 @@
+---
+---
+
+<section id="feedback" class="py-20 md:py-28 bg-cream">
+  <div class="max-w-2xl mx-auto px-4 md:px-6">
+    <div class="text-center mb-12">
+      <p class="accent text-terra text-lg tracking-[0.2em] uppercase mb-3">Eva's Restaurante</p>
+      <h2 class="heading text-4xl md:text-5xl text-black mb-4" data-i18n="feedback.title">
+        Tu Opinion Importa
+      </h2>
+      <p class="text-gray text-base md:text-lg leading-relaxed" data-i18n="feedback.subtitle">
+        Ayudanos a mejorar. Queremos saber que te parecio tu experiencia en Eva's.
+      </p>
+    </div>
+
+    <form id="feedback-form" class="space-y-6">
+      <div>
+        <label for="feedback-name" class="block text-sm font-medium text-black mb-2" data-i18n="feedback.name">
+          Nombre
+        </label>
+        <input
+          type="text"
+          id="feedback-name"
+          name="name"
+          class="w-full px-4 py-3 bg-white border border-gray-light rounded focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors duration-300 text-black"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="feedback-email" class="block text-sm font-medium text-black mb-2" data-i18n="feedback.email">
+          Correo electronico (opcional)
+        </label>
+        <input
+          type="email"
+          id="feedback-email"
+          name="email"
+          class="w-full px-4 py-3 bg-white border border-gray-light rounded focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors duration-300 text-black"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-black mb-3" data-i18n="feedback.rating">
+          Como fue tu experiencia?
+        </label>
+        <div id="star-rating" class="flex gap-2">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              type="button"
+              class="star-btn w-10 h-10 text-gray-light hover:text-terra transition-colors duration-200"
+              data-value={star}
+              aria-label={`${star} stars`}
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </button>
+          ))}
+        </div>
+        <input type="hidden" id="feedback-rating" name="rating" value="" />
+      </div>
+
+      <div>
+        <label for="feedback-message" class="block text-sm font-medium text-black mb-2" data-i18n="feedback.message">
+          Comentarios o recomendaciones
+        </label>
+        <textarea
+          id="feedback-message"
+          name="message"
+          rows="4"
+          class="w-full px-4 py-3 bg-white border border-gray-light rounded focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors duration-300 text-black resize-none"
+          required
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-green text-white py-3 rounded font-medium uppercase tracking-wider hover:bg-green-dark transition-colors duration-300"
+        data-i18n="feedback.send"
+      >
+        Enviar
+      </button>
+
+      <div id="feedback-success" class="hidden text-center py-4">
+        <p class="text-green font-medium" data-i18n="feedback.thanks">Gracias por tu opinion!</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const stars = document.querySelectorAll('.star-btn');
+  const ratingInput = document.getElementById('feedback-rating') as HTMLInputElement;
+  let currentRating = 0;
+
+  stars.forEach((star) => {
+    star.addEventListener('click', () => {
+      currentRating = Number(star.getAttribute('data-value'));
+      if (ratingInput) ratingInput.value = String(currentRating);
+      stars.forEach((s) => {
+        const val = Number(s.getAttribute('data-value'));
+        if (val <= currentRating) {
+          s.classList.remove('text-gray-light');
+          s.classList.add('text-terra');
+        } else {
+          s.classList.add('text-gray-light');
+          s.classList.remove('text-terra');
+        }
+      });
+    });
+  });
+
+  const form = document.getElementById('feedback-form') as HTMLFormElement;
+  const success = document.getElementById('feedback-success');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // For now, just show success. Replace with actual form endpoint later.
+    form.classList.add('hidden');
+    success?.classList.remove('hidden');
+  });
+</script>

@@ -1,0 +1,293 @@
+---
+const categories = [
+  {
+    id: 'bocados',
+    name: 'Bocados',
+    subtitle: 'Para abrir el apetito',
+    items: [
+      { name: 'Queso fundido con chistorra', desc: 'Base de frijol refrito, queso fundido y chistorra, acompanado de totopos', price: 160 },
+      { name: 'Queso poblano', desc: 'Queso fundido con champinones, elote, chile poblano tatemado, banado en crema poblana con tortillas de harina', price: 190 },
+      { name: 'Quesadillas de machaca', price: 180 },
+      { name: 'Quesadillas de barbacoa', price: 200 },
+      { name: 'Quesadillas de cochinita pibil', price: 160 },
+    ],
+  },
+  {
+    id: 'desayunos',
+    name: 'Desayunos',
+    subtitle: 'Todos nuestros huevos van preparados con tres piezas acompanados de frijol refrito y ensalada',
+    items: [
+      { name: 'Huevos revueltos con jamon', price: 185 },
+      { name: 'Huevos revueltos con chistorra', price: 185 },
+      { name: 'Huevos revueltos con panceta', price: 185 },
+      { name: 'Huevos rancheros', price: 185 },
+      { name: 'Plato Eva\'s', desc: 'Huevos estrellados, panceta y chistorra', price: 210, featured: true },
+      { name: 'Machaca de res', price: 290 },
+      { name: 'Huevos revueltos con machaca', price: 245 },
+      { name: 'Barbacoa', price: 300 },
+      { name: 'Menudo', price: 230 },
+    ],
+  },
+  {
+    id: 'omelets',
+    name: 'Omelets',
+    subtitle: 'Todos nuestros omelets son preparados con tres huevos y van acompanados de frijol refrito y ensalada',
+    items: [
+      { name: 'Omelet poblano', desc: 'Relleno de queso, rajas y elote, banado en salsa poblana', price: 240 },
+      { name: 'Omelet mexa', desc: 'Relleno de queso, barbacoa, cebolla curtida y cilantro', price: 280 },
+      { name: 'Omelet panceta', desc: 'Relleno de queso y panceta', price: 240 },
+      { name: 'Omelet de jamon', desc: 'Relleno de jamon y champinones', price: 240 },
+      { name: 'Omelet de chistorra', desc: 'Relleno de queso y chistorra', price: 220 },
+      { name: 'Omelet de cochinita pibil', desc: 'Relleno de queso, cochinita pibil, cebolla curtida y cilantro', price: 220 },
+    ],
+  },
+  {
+    id: 'chilaquiles',
+    name: 'Chilaquiles',
+    subtitle: 'Emplatados sobre frijol refrito, terminados con crema, queso cotija, cebolla curtida y cilantro',
+    items: [
+      { name: 'Chilaquiles sencillos', price: 180 },
+      { name: 'Chilaquiles con huevo', desc: 'Estrellado o revuelto', price: 220 },
+      { name: 'Chilaquiles con pollo a la parrilla', price: 260 },
+      { name: 'Chilaquiles con barbacoa', price: 270 },
+      { name: 'Chilaquiles con machaca', price: 270 },
+      { name: 'Chilaquiles con cochinita pibil', price: 270 },
+      { name: 'Chilaquiles con chistorra', price: 260 },
+    ],
+  },
+  {
+    id: 'pan-frances',
+    name: 'Pan Frances',
+    subtitle: 'Nuestro pan frances se elabora con pan brioche preparado en Eva\'s',
+    items: [
+      { name: 'Clasicos', desc: 'Con fresa y platano', price: 180 },
+      { name: 'Nutella', desc: 'Con fresa y platano banados de nutella', price: 220 },
+      { name: 'Apple pie', desc: 'Con compota de manzana, canela y miel', price: 220 },
+      { name: 'Dulce de leche', price: 220 },
+      { name: 'Tres Leches', price: 220 },
+      { name: 'Lotus', price: 220 },
+    ],
+  },
+  {
+    id: 'flat-bread',
+    name: 'Flat Bread',
+    items: [
+      { name: 'Mananero', desc: 'Pan de la casa, queso, tomate cherry, huevo estrellado o revuelto, panceta y chistorra', price: 220 },
+      { name: 'Champinones', desc: 'Pan de la casa, queso, tomate cherry, huevo revuelto o estrellado, champinones y espinacas', price: 200 },
+      { name: 'Pesto', desc: 'Pan de la casa, queso ricotta, tomate cherry, jamon serrano, pesto y hot honey', price: 260 },
+      { name: 'Barbacoa', desc: 'Pan de la casa, queso, barbacoa, cebolla curtida y cilantro', price: 260 },
+      { name: 'Cochinita pibil', desc: 'Pan de la casa, queso, cochinita pibil, cebolla curtida y cilantro', price: 220 },
+    ],
+  },
+  {
+    id: 'sandwiches',
+    name: 'Sandwiches',
+    items: [
+      { name: 'Grilled cheese', desc: 'Pan brioche, ranch, queso y salsa marinara', price: 260 },
+      { name: 'Barbacoa', desc: 'Pan brioche, queso, barbacoa, ranch, cebolla curtida y cilantro', price: 290 },
+      { name: 'Cochinita pibil', desc: 'Pan brioche, queso, cochinita pibil, ranch, cebolla curtida y cilantro', price: 280 },
+      { name: 'Pesto', desc: 'Pan brioche, queso, pesto y jamon serrano', price: 290 },
+      { name: 'Buffalo ranch', desc: 'Pan brioche, queso, pollo a la parrilla, buffalo y ranch', price: 280 },
+    ],
+  },
+  {
+    id: 'pizzas',
+    name: 'Pizzas',
+    items: [
+      { name: 'Pepperoni', price: 350 },
+      { name: 'Mexicana', desc: 'Base marinara, queso, chistorra, frijoles, jalapeno y panceta', price: 350 },
+      { name: 'Cavernicola', desc: 'Base marinara, queso, chistorra, panceta, jamon serrano y pepperoni', price: 350 },
+      { name: 'Jamon Serrano', desc: 'Base ranch, queso ricotta, pesto y jamon serrano', price: 350 },
+      { name: 'Hot Honey', desc: 'Base marinara, queso, pepperoni, queso ricotta y miel spicy', price: 350 },
+      { name: 'Buffalo ranch', desc: 'Base ranch, buffalo, queso, pollo a la parrilla, panceta y cebolla', price: 350 },
+    ],
+  },
+  {
+    id: 'yogurt-bowls',
+    name: 'Yogurt Bowls',
+    items: [
+      { name: 'Clasico', desc: 'Yogurt, platano, fresa, granola y mantequilla de mani', price: 150 },
+      { name: 'Apple pie', desc: 'Yogurt, compota de manzana, granola, canela y miel de abeja', price: 160 },
+      { name: 'Dulce de leche', desc: 'Yogurt, platano, fresa, granola y dulce de leche', price: 160 },
+    ],
+  },
+  {
+    id: 'jugos',
+    name: 'Jugos',
+    items: [
+      { name: 'Naranja', price: 90 },
+      { name: 'Verde', desc: 'Naranja, apio, nopal y pepino', price: 90 },
+    ],
+  },
+  {
+    id: 'smoothies-proteina',
+    name: 'Smoothies con Proteina',
+    subtitle: 'Preparados con un scoop de proteina vegana Habits',
+    items: [
+      { name: 'Very Berry', desc: 'Leche, proteina de vainilla, platano, frutos rojos y mantequilla de mani', price: 190 },
+      { name: 'Reese\'s', desc: 'Leche, proteina de chocolate, platano, avena y mantequilla de mani', price: 190 },
+      { name: 'Malibu Mango', desc: 'Leche, proteina de vainilla, platano, mango y mantequilla de mani', price: 190 },
+      { name: 'Freson', desc: 'Leche, proteina de vainilla, platano y fresa', price: 190 },
+      { name: 'Nutella', desc: 'Leche, proteina de chocolate, platano y nutella', price: 190 },
+      { name: 'Pina Colada', desc: 'Leche, proteina de vainilla, platano y pina', price: 190 },
+    ],
+  },
+  {
+    id: 'smoothies',
+    name: 'Smoothies',
+    items: [
+      { name: 'Green', desc: 'Jugo de naranja, mango, pina, espinaca, pepino y miel de abeja', price: 120 },
+      { name: 'Pink Lady', desc: 'Jugo de naranja, fresa, platano y miel de abeja', price: 100 },
+      { name: 'Oreo', desc: 'Leche, platano y galletas oreo', price: 120 },
+      { name: 'Lotus', desc: 'Leche, platano y galletas lotus', price: 160 },
+      { name: 'Tropical', desc: 'Jugo de naranja, mango, pina y fresa', price: 120 },
+    ],
+  },
+  {
+    id: 'bebidas-calientes',
+    name: 'Bebidas Calientes',
+    items: [
+      { name: 'Cafe americano', price: 60 },
+      { name: 'Cafe de la olla', desc: 'Con piloncillo y canela', price: 75 },
+      { name: 'Latte', price: 85 },
+      { name: 'Capuccino', price: 75 },
+      { name: 'Chai', price: 90 },
+      { name: 'Te', price: 80 },
+    ],
+  },
+  {
+    id: 'bebidas-frias',
+    name: 'Bebidas Frias',
+    items: [
+      { name: 'Latte', price: 85 },
+      { name: 'Chai', price: 90 },
+      { name: 'Limonada', price: 70 },
+      { name: 'Agua de naranjita', price: 70 },
+      { name: 'Agua de jamaica', price: 70 },
+      { name: 'Naranjada', price: 70 },
+      { name: 'Agua de horchata', price: 70 },
+      { name: 'Refresco', price: 50 },
+    ],
+  },
+];
+
+const salsas = ['Salsa roja', 'Salsa verde', 'Salsa poblana', 'Mole', 'Machos'];
+---
+
+<section id="menu" class="py-20 md:py-32 bg-white">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p class="accent text-terra text-lg tracking-[0.2em] uppercase mb-3">Eva's Restaurante</p>
+      <h2 class="heading text-5xl md:text-6xl text-black" data-i18n="menu.title">Menu</h2>
+    </div>
+
+    <!-- Category tabs -->
+    <div class="mb-12">
+      <div id="menu-tabs" class="flex flex-wrap justify-center gap-2 md:gap-3">
+        {categories.map((cat, i) => (
+          <button
+            class:list={[
+              'menu-tab px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm tracking-wide rounded-full border transition-all duration-300',
+              i === 0 ? 'bg-green text-white border-green' : 'text-gray border-gray-light hover:border-green hover:text-green',
+            ]}
+            data-target={cat.id}
+          >
+            {cat.name}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Category sections -->
+    {categories.map((cat, i) => (
+      <div
+        class:list={['menu-section', i === 0 ? 'block' : 'hidden']}
+        id={`menu-${cat.id}`}
+      >
+        <div class="mb-8">
+          <h3 class="accent text-3xl md:text-4xl text-green mb-2">{cat.name}</h3>
+          {cat.subtitle && (
+            <p class="text-gray text-sm italic max-w-2xl">{cat.subtitle}</p>
+          )}
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+          {cat.items.map((item: any) => (
+            <div class:list={[
+              'flex justify-between items-start gap-4 pb-4 border-b border-gray-light/50',
+              item.featured && 'bg-cream/50 -mx-3 px-3 py-3 rounded border-green/30',
+            ]}>
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <span class:list={['font-medium text-black', item.featured && 'text-green font-bold']}>
+                    {item.name}
+                  </span>
+                  {item.featured && (
+                    <span class="text-xs bg-terra text-white px-2 py-0.5 rounded uppercase tracking-wider">Signature</span>
+                  )}
+                </div>
+                {item.desc && (
+                  <p class="text-gray text-sm italic mt-1">{item.desc}</p>
+                )}
+              </div>
+              <span class="text-green font-medium whitespace-nowrap">${item.price}</span>
+            </div>
+          ))}
+        </div>
+
+        {cat.id === 'chilaquiles' && (
+          <div class="mt-8 bg-green/10 border border-green/20 rounded-lg p-6 max-w-md">
+            <h4 class="font-bold text-green mb-3 uppercase text-sm tracking-wider" data-i18n="menu.salsas.title">Salsas Disponibles</h4>
+            <ul class="space-y-1">
+              {salsas.map((salsa) => (
+                <li class="text-gray text-sm flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 bg-terra rounded-full"></span>
+                  {salsa}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    ))}
+
+    <!-- Note -->
+    <div class="mt-12 text-center">
+      <p class="text-gray text-sm italic" data-i18n="menu.note">
+        No tenemos medias ordenes. Cualquier cambio puede generar costo extra.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll('.menu-tab');
+  const sections = document.querySelectorAll('.menu-section');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-target');
+
+      tabs.forEach((t) => {
+        t.classList.remove('bg-green', 'text-white', 'border-green');
+        t.classList.add('text-gray', 'border-gray-light');
+      });
+      tab.classList.add('bg-green', 'text-white', 'border-green');
+      tab.classList.remove('text-gray', 'border-gray-light');
+
+      sections.forEach((s) => {
+        s.classList.add('hidden');
+        s.classList.remove('block');
+      });
+      const targetSection = document.getElementById(`menu-${target}`);
+      targetSection?.classList.remove('hidden');
+      targetSection?.classList.add('block');
+    });
+  });
+</script>

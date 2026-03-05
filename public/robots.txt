@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://evas-restaurante.pages.dev/sitemap-index.xml
