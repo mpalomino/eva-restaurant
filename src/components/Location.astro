@@ -91,7 +91,7 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
   <div class="relative">
     <div class="w-full h-[400px] md:h-[500px] map-container overflow-hidden">
       <iframe
-        src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyDL535_jTw7_o24l7GOUtbPXT2w-4Qx28Y&center=24.1426,-110.3128&zoom=16&maptype=roadmap`}
+        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDL535_jTw7_o24l7GOUtbPXT2w-4Qx28Y&q=Eva's+Restaurante,La+Paz,BCS,Mexico&zoom=16&maptype=roadmap`}
         width="100%"
         height="100%"
         style="border:0;"
@@ -99,17 +99,6 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
         referrerpolicy="no-referrer-when-downgrade"
         title="Eva's Restaurante location"
       ></iframe>
-      <!-- Custom pin overlay -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full pointer-events-none">
-        <div class="flex flex-col items-center">
-          <div class="bg-green text-white px-3 py-1.5 rounded-lg text-sm font-medium shadow-lg mb-1 whitespace-nowrap">
-            Eva's Restaurante
-          </div>
-          <svg class="w-8 h-8 text-green drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
-          </svg>
-        </div>
-      </div>
     </div>
     <!-- Top fade overlay to blend with section above -->
     <div class="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-cream-dark to-transparent pointer-events-none"></div>
